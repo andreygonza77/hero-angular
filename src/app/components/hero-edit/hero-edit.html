@@ -1,1 +1,4 @@
-<p>hero-edit works!</p>
+<input [(ngModel)]="hero.nome" name="nome" placeholder="Nome" />
+<input [(ngModel)]="hero.potere" name="potere" placeholder="Potere" />
+<button (click)="save()" >Salva</button>
+<button (click)="reset()">Reset</button>

@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
+import { HeroEdit } from '../hero-edit/hero-edit';
 
 @Component({
-  selector: 'app-card-list',
-  imports: [HeroCard, CommonModule],
+  selector: 'app-hero-list',
+  imports: [HeroCard, CommonModule, HeroEdit],
   templateUrl: './hero-list.html',
   styleUrl: './hero-list.css',
 })
@@ -25,6 +26,12 @@ export class HeroList {
       id: 2,
       nome: "piemontese",
       potere: "ridere",
+      completata: false
+    },
+    {
+      id: 3,
+      nome: "morelli",
+      potere: "regolare il tempo",
       completata: false
     }
 

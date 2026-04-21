@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../models/hero.model';
+import { HeroCard } from '../hero-card/hero-card';
 
 @Component({
-  selector: 'app-card-edit',
-  imports: [Hero, FormsModule],
+  selector: 'app-hero-edit',
+  imports: [HeroCard, FormsModule],
   templateUrl: './hero-edit.html',
   styleUrl: './hero-edit.css',
 })
