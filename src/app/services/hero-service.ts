@@ -42,6 +42,6 @@ export class HeroService {
     }
   }
 
-  markAsDone(hero: Hero) {}
-  
+  markAsDone(hero: Hero) {} // da fare
+  selectHero(hero: Hero) {} // da fare 
 }
