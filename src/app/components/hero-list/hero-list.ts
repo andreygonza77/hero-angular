@@ -3,6 +3,7 @@ import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
 import { HeroEdit } from '../hero-edit/hero-edit';
+import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero-list',
@@ -15,7 +16,6 @@ export class HeroList {
   heroSelected: Hero = {} as Hero;
 
   heroes: Hero[] = [
-
     {
       id: 1,
       nome: "faliani",
@@ -56,5 +56,11 @@ export class HeroList {
         this.heroes[index] = hero;
       }
     }
+  }
+
+  constructor(private HeroService:  HeroService) {}
+
+  heroList(){
+    return this.HeroService.heroList();  
   }
 }
