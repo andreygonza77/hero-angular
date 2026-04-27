@@ -29,4 +29,19 @@ export class HeroService {
   heroList(): Hero[] {
     return this.heroes;
   }
+
+  addHero(hero: Hero) {
+    if (hero.id === -1 || hero.id === null) {
+      hero.id = this.heroes.length + 1;
+      this.heroes.push(hero);
+    } else {
+      const index = this.heroes.findIndex(h => h.id === hero.id);
+      if (index !== -1) {
+        this.heroes[index] = hero;
+      }
+    }
+  }
+
+  markAsDone(hero: Hero) {}
+  
 }
