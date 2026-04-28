@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Hero } from '../../models/hero.model';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Hero } from '../../models/hero.model';
 import { HeroCard } from '../hero-card/hero-card';
 import { HeroEdit } from '../hero-edit/hero-edit';
 import { HeroService } from '../../services/hero-service';
@@ -11,42 +11,26 @@ import { HeroService } from '../../services/hero-service';
   templateUrl: './hero-list.html',
   styleUrl: './hero-list.css',
 })
-export class HeroList implements OnInit, AfterViewInit {
-  heroSelected: Hero = {} as Hero;
-  heroes!: Hero[];
-  contatore = 0;
+export class HeroList {
+  constructor(private heroService: HeroService) {}
 
-
-  constructor(private HeroService:  HeroService) {
-    
+  get heroes() {
+    return this.heroService.heroList();
   }
 
-  ngOnInit() {
-    this.heroes = this.HeroService.heroList();
-  }
-
-  ngAfterViewInit() {
-    console.log("ngAfterViewInit");
+  get heroSelected() {
+    return this.heroService.heroSelected;
   }
 
   markAsDone(hero: Hero) {
-    hero.completata = true;
-    this.contatore++;
+    this.heroService.markAsDone(hero);
   }
 
   selectHero(hero: Hero) {
-    this.heroSelected = {...hero};
+    this.heroService.selectHero(hero);
   }
 
   saveHero(hero: Hero) {
-    if (hero.id === -1 || hero.id === null) {
-      hero.id = this.heroes.length + 1;
-      this.heroes.push(hero);
-    } else {
-      const index = this.heroes.findIndex(h => h.id === hero.id);
-      if (index !== -1) {
-        this.heroes[index] = hero;
-      }
-    }
+    this.heroService.saveHero(hero);
   }
 }

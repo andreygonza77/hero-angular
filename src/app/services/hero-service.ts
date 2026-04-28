@@ -26,11 +26,28 @@ export class HeroService {
     }
   ];
 
+  private selectedHero: Hero = {
+    id: -1,
+    nome: "",
+    potere: "",
+    completata: false
+  };
+
+  private completedCount = 0;
+
   heroList(): Hero[] {
     return this.heroes;
   }
 
-  addHero(hero: Hero) {
+  get heroSelected(): Hero {
+    return this.selectedHero;
+  }
+
+  get doneCount(): number {
+    return this.completedCount;
+  }
+
+  saveHero(hero: Hero) {
     if (hero.id === -1 || hero.id === null) {
       hero.id = this.heroes.length + 1;
       this.heroes.push(hero);
@@ -40,8 +57,26 @@ export class HeroService {
         this.heroes[index] = hero;
       }
     }
+    this.resetSelectedHero();
   }
 
-  markAsDone(hero: Hero) {} // da fare
-  selectHero(hero: Hero) {} // da fare 
+  markAsDone(hero: Hero) {
+    if (!hero.completata) {
+      hero.completata = true;
+      this.completedCount++;
+    }
+  }
+
+  selectHero(hero: Hero) {
+    this.selectedHero = { ...hero };
+  }
+
+  resetSelectedHero() {
+    this.selectedHero = {
+      id: -1,
+      nome: "",
+      potere: "",
+      completata: false
+    };
+  }
 }
