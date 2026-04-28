@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
+import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero',
@@ -11,7 +12,10 @@ import { CommonModule } from '@angular/common';
 export class HeroCard {
   @Input() hero!: Hero;
   @Output() onMissionDone = new EventEmitter<Hero>();
+  
+   constructor(private HeroService:  HeroService) {
 
+    }
   notifyParent() {
     this.onMissionDone.emit(this.hero);
   }

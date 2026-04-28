@@ -1,36 +1,40 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Hero } from '../../models/hero.model';
+import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
-import { HeroEdit } from '../hero-edit/hero-edit';
 import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero-list',
-  imports: [HeroCard, CommonModule, HeroEdit],
+  imports: [HeroCard, CommonModule],
   templateUrl: './hero-list.html',
   styleUrl: './hero-list.css',
 })
-export class HeroList {
-  constructor(private heroService: HeroService) {}
+export class HeroList implements OnInit, AfterViewInit {
+  heroSelected: Hero = {} as Hero;
+  heroes!: Hero[];
+  contatore = 0;
 
-  get heroes() {
-    return this.heroService.heroList();
+  constructor(private HeroService:  HeroService) {
   }
 
-  get heroSelected() {
-    return this.heroService.heroSelected;
+  ngOnInit() {
+    this.heroes = this.HeroService.heroList();
   }
 
-  markAsDone(hero: Hero) {
-    this.heroService.markAsDone(hero);
+  ngAfterViewInit() {
+    console.log("ngAfterViewInit");
   }
 
-  selectHero(hero: Hero) {
-    this.heroService.selectHero(hero);
+  markAsDone(hero: Hero): void {
+    this.HeroService.markAsDone(hero);
   }
 
-  saveHero(hero: Hero) {
-    this.heroService.saveHero(hero);
+  selectHero(hero: Hero): void {
+    this.HeroService.selectHero(hero);
+  }
+
+  saveHero(hero: Hero): void {
+    this.HeroService.saveHero(hero);
   }
 }

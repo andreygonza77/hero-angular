@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Hero } from '../../models/hero.model';
+import { HeroService } from '../../services/hero-service';
 
 @Component({
   selector: 'app-hero-edit',
@@ -17,21 +18,16 @@ export class HeroEdit {
   };
   @Output() onSave = new EventEmitter<Hero>();
 
-  save() {
-    // this.hero.id = this.hero.id === null ? -1 : this.hero.id;
-    if (typeof this.hero.id === 'undefined' || this.hero.id === null) {
-      this.hero.id = -1;
-    }
-    this.onSave.emit(this.hero);
-    this.reset();
+  constructor(private HeroService: HeroService) {}
+  
+  ngOnInit() {}
+
+  saveHero() {
+    this.HeroService.saveHero(this.hero);
+    this.HeroService.resetSelectedHero();
   }
 
-  reset() {
-    this.hero = {
-      id: -1,
-      nome: "",
-      potere: "",
-      completata: false
-    };
+  resetSelectedHero() {
+    this.HeroService.resetSelectedHero();
   }
 }
