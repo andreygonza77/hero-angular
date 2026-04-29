@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  max-width: 520px;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  border-radius: 28px;
+  background: rgba(11, 21, 42, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+}
+
+input {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+input:focus {
+  border-color: rgba(116, 210, 255, 0.65);
+  background: rgba(116, 210, 255, 0.08);
+}
+
+button {
+  min-width: 120px;
+  border: none;
+  border-radius: 999px;
+  padding: 0.95rem 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #07101f;
+  background: linear-gradient(135deg, #74d2ff, #77f6d6);
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+button + button {
+  margin-left: 0.85rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+button + button:hover {
+  background: rgba(255, 255, 255, 0.14);
+}

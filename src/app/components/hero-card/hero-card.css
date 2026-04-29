@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+.card {
+  width: 100%;
+  min-height: 180px;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  background: linear-gradient(180deg, rgba(13, 27, 57, 0.92), rgba(18, 34, 69, 0.88));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(116, 210, 255, 0.3);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.32);
+}
+
+.card h3 {
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  font-size: 1.4rem;
+}
+
+.card p {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.card button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.25rem;
+  font-weight: 700;
+  color: #081829;
+  background: linear-gradient(135deg, #74d2ff, #4f92ff);
+  box-shadow: 0 14px 30px rgba(116, 210, 255, 0.18);
+  cursor: pointer;
+  transition: transform 180ms ease, filter 180ms ease, opacity 180ms ease;
+}
+
+.card button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.card button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
