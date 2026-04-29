@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Hero } from '../../models/hero.model';
 import { CommonModule } from '@angular/common';
 import { HeroCard } from '../hero-card/hero-card';
@@ -15,7 +16,7 @@ export class HeroList implements OnInit, AfterViewInit {
   heroes!: Hero[];
   contatore = 0;
 
-  constructor(private HeroService:  HeroService) {
+  constructor(private HeroService: HeroService, private router: Router) {
   }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class HeroList implements OnInit, AfterViewInit {
 
   selectHero(hero: Hero): void {
     this.HeroService.selectHero(hero);
+    this.router.navigate(['/hero']);
   }
 
   saveHero(hero: Hero): void {
